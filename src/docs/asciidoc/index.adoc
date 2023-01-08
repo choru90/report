@@ -1,0 +1,44 @@
+= EHP CMS REST API Docs
+:toc: left
+:toclevels: 2
+:sectlinks:
+
+[[Content-API]]
+== Content 상세조회
+=== Content 상세조회 - 카드타입
+==== Curl request
+include::{snippets}/get-card-content-detail/curl-request.adoc[]
+==== Path parameters
+include::{snippets}/get-card-content-detail/path-parameters.adoc[]
+==== Response fields - CardContentDetailDto
+include::{snippets}/get-card-content-detail/response-fields.adoc[]
+==== HTTP Request
+include::{snippets}/get-card-content-detail/http-request.adoc[]
+==== HTTP Response
+include::{snippets}/get-card-content-detail/http-response.adoc[]
+
+=== Content 상세조회 - 게시글타입
+==== Curl request
+include::{snippets}/get-post-content-detail/curl-request.adoc[]
+==== Path parameters
+include::{snippets}/get-post-content-detail/path-parameters.adoc[]
+==== Response fields - PostContentDetailDto
+include::{snippets}/get-post-content-detail/response-fields.adoc[]
+==== HTTP Request
+include::{snippets}/get-post-content-detail/http-request.adoc[]
+==== HTTP Response
+include::{snippets}/get-post-content-detail/http-response.adoc[]
+
+
+== Content 목록조회
+=== Content 목록 조회 검색형
+==== Curl request
+include::{snippets}/get-contents-search/curl-request.adoc[]
+==== Request parameters - __Query Params Key-Values__
+include::{snippets}/get-contents-search/request-parameters.adoc[]
+==== Response fields
+include::{snippets}/get-contents-search/response-fields.adoc[]
+==== HTTP Request
+include::{snippets}/get-contents-search/http-request.adoc[]
+==== HTTP Response
+include::{snippets}/get-contents-search/http-response.adoc[]

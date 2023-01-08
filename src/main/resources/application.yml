@@ -1,0 +1,67 @@
+server:
+  port: ${SERVER_PORT:8080}
+
+spring:
+  application:
+    name: project_name # FIXME STEP1 - 프로젝트명
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ${DB_URL}        # TODO STEP3 - 환경변수
+    username: ${DB_USER}  # TODO STEP3 - 환경변수
+    password: ${DB_PASS}  # TODO STEP3 - 환경변수
+    hikari:
+      maximum-pool-size: ${DB_POOL_SIZE:1}
+
+  jpa:
+    database: mysql                                         # FIXME STEP4 - 데이터베이스
+    database-platform: org.hibernate.dialect.MySQL8Dialect  # FIXME STEP4 - 데이터베이스
+    hibernate:
+      ddl-auto: validate                                    # FIXME STEP4 - 데이터베이스
+    show-sql: true
+    generate-ddl: false
+    properties:
+      hibernate:
+        format_sql: true
+
+  flyway:
+    enabled: true
+    baseline-on-migrate: true # flyway_shcema_history 자동 생성 옵션 true, 이미 있는 경우 false
+    url: ${DB_URL}        # TODO STEP3 - 환경변수
+    user: ${DB_USER}      # TODO STEP3 - 환경변수
+    password: ${DB_PASS}  # TODO STEP3 - 환경변수
+
+  zipkin:
+    enabled: false
+
+logging:
+  config:
+    classpath: logback.xml
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, httptrace, info, metrics, prometheus
+  metrics:
+    tags:
+      application: ${spring.application.name}
+
+
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: release
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+    generate-ddl: false
+    #    defer-datasource-initialization: true # flyway 적용시 비활성화
+    properties:
+      hibernate:
+        format_sql: false
